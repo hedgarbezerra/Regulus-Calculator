@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Regulus.Common.Configuradores;
+using Regulus.Common.Formatadores;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Collections.Generic;
@@ -19,11 +20,12 @@ namespace Regulus.Common.Vinculadores
         public void Vincular(IServiceCollection services)
         {
 
-            #region Definindo a entrada e saída de JSON padronizada
+            #region Definindo a entrada e saída de dados com content negotiation padronizada
             services.AddControllers(op =>
             {
                 op.RespectBrowserAcceptHeader = true;
                 op.ReturnHttpNotAcceptable = true;
+                op.OutputFormatters.Add(new FormatadorCsv());
             })
                 .AddXmlSerializerFormatters()
                 .AddJsonOptions(ops =>
