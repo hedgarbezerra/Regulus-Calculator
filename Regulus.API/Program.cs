@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 #region Configurações de serviços
 IVinculadorDependencia vinculadorApi = new VinculadorApi();
 
+
 vinculadorApi.Vincular(builder.Services);
 #endregion
 
