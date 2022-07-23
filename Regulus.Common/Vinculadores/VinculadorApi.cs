@@ -45,7 +45,7 @@ namespace Regulus.Common.Vinculadores
             #region Versionamento da API (Considerada pelo header ou pela query string)
             services.AddApiVersioning(options =>
             {
-                options.DefaultApiVersion = new ApiVersion(1, 0);
+                options.DefaultApiVersion = new ApiVersion(2, 0);
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.ReportApiVersions = true;
                 options.ApiVersionReader = ApiVersionReader.Combine(new HeaderApiVersionReader("x-api-version"), new QueryStringApiVersionReader("api-version"));

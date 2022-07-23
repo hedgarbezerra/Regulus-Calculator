@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Regulus.Common.Vinculadores;
 using Serilog;
 using System.Text.Json;
 using System.Xml.Linq;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var provider = builder.Services.BuildServiceProvider();
 #region Configurações de serviços
 IVinculadorDependencia vinculadorApi = new VinculadorApi();
 
@@ -42,9 +43,15 @@ app.UseExceptionHandler(c => c.Run(async context =>
 #endregion
 
 #region Configuração do aplicativo
-
+IApiVersionDescriptionProvider apiVersioningProvider = builder.Services.BuildServiceProvider().GetService<IApiVersionDescriptionProvider>();
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(c =>
+{
+    foreach (var description in apiVersioningProvider?.ApiVersionDescriptions)
+    {
+        c.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
+    }
+});
 
 
 app.UseHttpsRedirection();
