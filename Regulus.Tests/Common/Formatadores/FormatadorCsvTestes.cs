@@ -35,10 +35,8 @@ namespace Regulus.Tests.Common.Formatadores
             Encoding selectedEncoding = Encoding.UTF8;
 
             // Act
-            await formatadorCsv.WriteResponseBodyAsync(context, selectedEncoding);
-
-            // Assert
-            Assert.Fail();
+            formatadorCsv.Invoking(f => f.WriteResponseBodyAsync(context, selectedEncoding))
+                .Should().BeNull();
         }
     }
 

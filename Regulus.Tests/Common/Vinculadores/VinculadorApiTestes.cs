@@ -29,14 +29,11 @@ namespace Regulus.Tests.Common.Vinculadores
         {
             // Arrange
             var vinculadorApi = this.CreateVinculadorApi();
-            var mqServices = _mockRepository.Create<IServiceCollection>();
 
             // Act
-            vinculadorApi.Vincular(mqServices.Object);
-
-            // Assert
-            Assert.Fail();
-            _mockRepository.VerifyAll();
+            vinculadorApi.Invoking(v => v.Vincular(null))
+                .Should()
+                .Throw<ArgumentNullException>();
         }
     }
 }
