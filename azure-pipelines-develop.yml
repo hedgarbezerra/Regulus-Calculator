@@ -41,7 +41,8 @@ steps:
   displayName: Publish
   inputs:
     command: publish
-    projects: 'Regulus.sln'
+    publishWebProjects: false
+    projects: '**/*.sln'
     arguments: '--configuration $(BuildConfiguration) --output "$(build.artifactstagingdirectory)"'
     zipAfterPublish: True
 
