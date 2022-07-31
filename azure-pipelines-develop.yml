@@ -41,11 +41,10 @@ steps:
   displayName: Publish
   inputs:
     command: publish
-    publishWebProjects: false
+    publishWebProjects: False
     projects: '**/*.sln'
     arguments: '--configuration $(BuildConfiguration) --output "$(build.artifactstagingdirectory)"'
-    zipAfterPublish: True
-
+    
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
