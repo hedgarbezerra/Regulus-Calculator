@@ -41,7 +41,7 @@ steps:
   displayName: Publish
   inputs:
     command: publish
-    publishWebProjects: false
+    publishWebProjects: true
     projects: '**/*.sln'
     arguments: '--configuration $(BuildConfiguration) --output "$(build.artifactstagingdirectory)"'
     zipAfterPublish: True
@@ -49,4 +49,5 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
+    artifactName: WebApp
     PathtoPublish: '$(build.artifactstagingdirectory)'
