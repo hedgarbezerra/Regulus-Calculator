@@ -15,11 +15,18 @@ namespace Regulus.API.Controllers.v2
         {
             return Ok("Hello Stage");
         }
+
         [HttpGet]
         [Route("helloworld")]
         public IActionResult Get()
         {
             return Ok("Hello Stage");
+        }
+        [HttpGet]
+        [Route("/{name:string}")]
+        public IActionResult Get(string name)
+        {
+            return Ok("Hello "+ name);
         }
     }
 }
