@@ -28,5 +28,10 @@ namespace Regulus.API.Controllers.v2
         {
             return Ok("Hello "+ name);
         }
+        [HttpGet]
+        public IActionResult Ge3t()
+        {
+            return Ok("ugauga");
+        }
     }
 }
