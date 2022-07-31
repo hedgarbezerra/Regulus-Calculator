@@ -8,6 +8,7 @@
     <DelaySign>False</DelaySign>
     <UserSecretsId>23a1b04c-deb3-4b70-b293-b1863cc07191</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <FileVersion>1</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
